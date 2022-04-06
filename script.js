@@ -19,23 +19,29 @@ Step seven: After last hole, display one of three messages, based on player's sc
 */
 
 let playerName = prompt("Welcome to GC mini golf! What is your name?");
-console.log(`Hi there, ${playerName}!`);
 
 let holeNumber = prompt(`Hi ${playerName}! Would you like to play 3 or 6 holes?`);
-console.log(`${playerName} will be playing ${holeNumber} holes.`);
 
 let gameTotal = 0
 
+let par = 3
+
 for (i = 1; i <= holeNumber; i++) {
-    let gameScore = Number(prompt("How many putts for hole 1? (par: 3)"));
+    let gameScore = Number(prompt(`How many putts for hole ${i}? (par: 3)`));
     gameTotal += gameScore;
 }
 
+if (holeNumber === 3) {
+    let total = 9;
+    gameTotal -= total;
+} else if (holeNumber === 6) {
+    gameTotal -= total * 2;
+}
 
 if (gameTotal < 0) {
-    console.log("Great job, " + playerName + "! Your total par was: -" + gameTotal + ".")
-} else if (gameTotal = 0) {
+    console.log("Great job, " + playerName + "! Your total par was: " + gameTotal + ".")
+} else if (gameTotal === 0) {
     console.log("Good game, " + playerName + "! Your total par was: " + gameTotal + ".")
 } else if (gameTotal > 0) {
-    console.log("Nice try, " + playerName + "... Your total par was: +" + gameTotal + ".")
+    console.log("Nice try, " + playerName + "... Your total par was: " + gameTotal + ".")
 }
